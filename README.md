@@ -47,15 +47,17 @@ of one character or several at a time but you can only search for 1 house at a t
 of the character where the rest of the character information will be displayed.
 provides us with the API.
 
-### :yarn: Used technology. 
-####Built With:
+### :rocket: Technologies Used
 
-* [![Docker][Docker.com]][Docker-url]
-* [![Laravel10][Laravel.com]][Laravel-url]
-* [![MongoDb][MongoDb.com]][MongoDb-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+##### :heart: Built With:
 
+* ![Docker](https://img.shields.io/badge/Docker-<COLOR>?style=for-the-badge&logo=docker&logoColor=white) [Docker](https://www.docker.com/)
+* ![Laravel 10](https://img.shields.io/badge/Laravel%2010-<COLOR>?style=for-the-badge&logo=laravel&logoColor=white) [Laravel](https://laravel.com/)
+* ![MongoDB](https://img.shields.io/badge/MongoDB-<COLOR>?style=for-the-badge&logo=mongodb&logoColor=white) [MongoDB](https://www.mongodb.com/)
+* ![Bootstrap](https://img.shields.io/badge/Bootstrap-<COLOR>?style=for-the-badge&logo=bootstrap&logoColor=white) [Bootstrap](https://getbootstrap.com/)
+* ![jQuery](https://img.shields.io/badge/jQuery-<COLOR>?style=for-the-badge&logo=jquery&logoColor=white) [jQuery](https://jquery.com/)
+
+### :heavy_check_mark: Images:
 
 ![Buscador con laravel y mongo](/capture.png)
 ![Buscador con laravel y mongo](/capture_show.png)

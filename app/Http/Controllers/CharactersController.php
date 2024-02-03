@@ -83,7 +83,7 @@ class CharactersController extends Controller
             ]));
         }
 
-        $characters = $characters->get();
+        $characters = $characters->groupBy($attribute)->get();
         $responseData = [];
 
         foreach ($characters as $result) {

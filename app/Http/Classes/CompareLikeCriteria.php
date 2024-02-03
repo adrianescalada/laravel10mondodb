@@ -18,7 +18,6 @@ class CompareLikeCriteria implements CriteriaInterface
 
     public function apply($query)
     {
-        $query->where($this->field, 'like', '%' . $this->value . '%')
-            ->groupBy($this->field);
+        $query->where($this->field, 'like', '%' . $this->value . '%');
     }
 }
