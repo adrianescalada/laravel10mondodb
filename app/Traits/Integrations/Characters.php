@@ -2,25 +2,48 @@
 
 namespace App\Traits\Integrations;
 
-use GuzzleHttp\Exception\GuzzleException;
-use Exception;
+use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Log;
+use GuzzleHttp\Exception\RequestException;
+use Symfony\Component\HttpFoundation\Response;
 
 class Characters
 {
-    public function __construct()
+    protected $httpClient;
+    protected $url;
+
+    public function __construct($httpClient = null)
     {
+        $this->httpClient = $httpClient ?: new Client();
         $this->url   = config('services.characters.url');
     }
+
     public function getCharacters()
     {
         try {
-            $context = stream_context_create(array('http' => array('protocol_version' => '1.1')));
-            $json         = file_get_contents($this->url . '/api/characters', false, $context);
-            return $json;
-        } catch (Exception | GuzzleException $exception) {
-            Log::error("error reading file", [$exception]);
-            return $json = null;
+            $response = $this->httpClient->request('GET', $this->url . '/api/characters');
+            $responseData = json_decode($response->getBody()->getContents(), true);
+            if (null === $responseData) {
+                return [
+                    'message' => "Characters API returned an error: ",
+                    'status_code' => Response::HTTP_NOT_FOUND
+                ];
+            }
+            return $responseData;
+        } catch (RequestException $exception) {
+            $statusCode = $exception->hasResponse() ?
+                $exception->getResponse()->getStatusCode() :
+                Response::HTTP_NOT_FOUND;
+            $message = $exception->hasResponse() ?
+                "Characters API returned an error: " . $exception->getResponse()->getBody()->getContents() :
+                "Error reading file: " . $exception->getMessage();
+
+            Log::error($message);
+
+            return [
+                'message' => $message,
+                'status_code' => $statusCode
+            ];
         }
     }
 }

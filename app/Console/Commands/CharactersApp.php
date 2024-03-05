@@ -26,10 +26,10 @@ class CharactersApp extends Command
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(CharactersTrait $charactersTrait)
     {
         parent::__construct();
-        $this->charactersTrait = new CharactersTrait;
+        $this->charactersTrait = $charactersTrait;
     }
 
     /**
@@ -47,11 +47,11 @@ class CharactersApp extends Command
             $character->truncate();
         }
 
-        $request  = $this->charactersTrait->getCharacters();
-        $response = collect(json_decode($request, true));
-        if (!$response->isEmpty()) {
-            foreach ($response as $item) {
-                $character->saveCharactersInModel($item);
+        $characters = $this->charactersTrait->getCharacters();
+
+        if (!empty($characters)) {
+            foreach ($characters as $characterData) {
+                $character->saveCharactersInModel($characterData);
             }
         }
     }
