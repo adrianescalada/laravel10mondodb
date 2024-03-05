@@ -20,7 +20,7 @@ services:
     networks:
       - laravel_network
   db:
-    image: mysql:5.7
+    image: mysql:8.0.26
     platform: linux/amd64
     container_name: laravel_db
     ports:
@@ -28,10 +28,10 @@ services:
     volumes:
       - "laravel_database:/var/lib/mysql"
     environment:
-      MYSQL_ROOT_PASSWORD: laravel2024!
-      MYSQL_USER: root
-      MYSQL_PASSWORD: secret
       MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: UrI9OoeEI1HEyVgg
+      MYSQL_ROOT_PASSWORD: UrI9OoeEI1HEyVgg
     networks:
       - laravel_network
   redis:

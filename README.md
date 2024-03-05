@@ -12,6 +12,7 @@
 
 ### :heavy_check_mark:	Docker
 
+- <code> rm -f composer.lock && rm -f .env && rm -Rf vendor</code>
 - <code>docker compose build</code>
 - <code>docker compose up -d</code>
 
@@ -20,7 +21,7 @@
 1. <code>php artisan key:generate</code>
 2. <code>php artisan migrate</code>
 3. <code>php artisan update:characters</code> (Allows you to migrate character content to a local database)
-4- <code>php artisan test</code>
+4. <code>http://localhost:8079</code>
 
 ### :heavy_check_mark:	 Laravel 10 + mongoDb
 
